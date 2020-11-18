@@ -1,0 +1,80 @@
+EDUARDO KAZENSKI REQUIAO - ADS 41
+LINGUAGEM DE PROGRAMAÇÃO II - 2020
+
+
+1- O que é HTTP
+
+Ao acessar alguns sites, usamos a tradicional URL. Por sua vez, a URL é o endereço do site. Dessa forma, você já deve ter reparado também em uma sigla seguida do código “://”.
+
+Por exemplo: http://www.exemplo.com.br
+
+Tudo o que vem antes desse código é o protocolo usado para fazer um site chegar até a sua tela. Existem alguns protocolos, como o TCP, FTP, maito, mas hoje vamos falar sobre o HTTP.
+
+HTTP é a abreviação de Hyper Text Transfer Protocol, que significa: Protocolo de Transferência de Hipertexto.
+
+O HTTP é o protocolo que define as regras para a comunicação entre o cliente o servidor que permite a obtenção de recursos, como documentos HTML. 
+--------------------------------------------------------
+2- Conceitos de requisição http.
+
+No fluxo básico o cliente realiza uma requisição para o servidor, nessa requisição é enviada além de várias outras informações um método que indica a ação que ele deseja. O servidor devolve uma resposta, nessa resposta, além de outras informações, existe um código que indica ao cliente o que aconteceu.
+
+Por exemplo, se estivermos falando de uma aplicação web, o cliente é o navegador, ele envia um pedido para o servidor web usando o protocolo HTTP, com base nesse pedido, se tudo estiver correto, o servidor responde também usando o mesmo protocolo o conteúdo solicitado.
+
+--------------------------------------------------------
+3-  Como funciona
+
+HTTP é um protocolo baseado em texto sem conexão. Isso significa que as pessoas que acessam o site da sua empresa enviam solicitações a servidores que as exibem na forma do seu site em formato de texto, imagens, e outros tipos de mídia. Depois que a solicitação é atendida por um servidor, a conexão entre o usuário e o servidor é desconectada.
+
+Uma nova conexão deve ser feita para cada solicitação, isto é, cada vez que alguém acessa o seu site. Em suma, quando alguém digita a URL do seu site em um navegador, é isto que acontece:
+
+1. se a URL pertencer a um domínio próprio, o navegador primeiro se conecta a um servidor e recuperará o endereço IP correspondente ao servidor;
+2. o navegador se conecta ao servidor e envia uma solicitação HTTP para a página da web desejada (que, neste exemplo, é o seu site);
+3. o servidor recebe a solicitação e verifica a página desejada. Se a página existir, o servidor a mostrará. Se o servidor não conseguir encontrar a página solicitada, ele enviará uma mensagem de erro HTTP 404, ou seja, página não encontrada;
+4.o navegador, então, recebe a página de volta e a conexão é echada;
+5. caso a página exista (e é isso que se espera), o navegador a analisa e procura outros elementos necessários para concluir a sua exibição, o que inclui seus textos, imagens e afins;
+6. para cada um desses elementos, o navegador faz conexões adicionais e solicitações HTTP para o servidor para cada elemento; 
+7. quando o navegador terminar de carregar todos os elementos, a página será carregada na janela do navegador.
+
+--------------------------------------------------------
+4- Onde utilizamos, para que serve? Exemplifique
+
+O Hypertext Transfer Protocol, sigla HTTP (em português Protocolo de Transferência de Hipertexto) é um protocolo de comunicação (na camada de aplicação segundo o Modelo OSI) utilizado para sistemas de informação de hipermídia, distribuídos e colaborativos. Ele é a base para a comunicação de dados da World Wide Web.
+
+--------------------------------------------------------
+5- Quais os verbos que utilizamos para efetuar uma requisição HTTP? Explique para que serve cada um deles.
+
+Cada requisição está atrelada a um verbo HTTP, ou método, no cabeçalho de requisição. São as letras maiúsculas no início do cabeçalho. Por exemplo:
+
+>> GET / HTTP/1.1
+Significa que o método GET está sendo utilizado, enquanto
+
+>> DELETE /clients/anne HTTP/1.1
+significa que o método DELETE está sendo utilizado.
+
+Os verbos HTTP dizem ao servidor o que ele deve fazer com a informação identificada na URL.
+
+Os mais importantes para criar uma API RESTful são GET, POST, PUT, e DELETE. Outros métodos estão disponíveis, como o HEAD e OPTIONS, mas a utilização destes é mais rara.
+
+- GET é metodo mais simples de requisição HTTP; o mesmo que navegadores utilizam toda vez que você clica em um link ou acessa através da barra de endereços. Com as instruções, o servidor transmite a informação indentificada na URL para o cliente.
+
+- PUT Uma requisição PUT é utilizada quando desejamos criar ou atualizar uma informação identificada por uma URL. Por exemplo,
+
+>> PUT /clients/robin
+pode criar um cliente, chamado Robin no servidor. Você deve ter notado que o REST é complemente livre do backend; não há nenhuma instrução na requisição para informar ao servidor como essa informação deve ser criada. 
+
+- DELETE
+O DELETE deve atuar ao contrária do PUT; deve ser utilizado quando você deseja deletar o recurso identificada pela URL, na requisição.
+
+>> curl -v -X DELETE /clients/anne
+Isso vai vai deletar todas as informações relacionadas ao recurso, identificado no endereço /clients/anne.
+
+
+- POST é utilizado quando houver repetição no processo executado no servidor, ou seja, quando uma requisição POST é executada mais de uma vez. Complementando, requisições POST devem executar o processo no corpo como um subordinado da URL que você está postando.
+
+Em outras palavras:
+
+>> POST /clients/
+não deve causar modificações ao recurso presente no /clients/, por si só, e sim a um recurso identificado na URL após o /clients/. Por exemplo, pode ser a inclusão de um novo cliente na lista, com um id gerado pelo servidor.
+
+>> /clients/some-unique-id
+Requisições PUT são facilmente utilizadas ao invés das requisições POST. As vezes, requisições POST são utilizadas para operações de gatilhos/triggers no servidor, e que não se enquadram dentro do paradigma Create/Update/Delete; mas isso, de qualquer forma, está fora do escopo do REST. No nosso exemplo, vamos sempre utilizar o PUT.

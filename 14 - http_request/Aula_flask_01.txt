@@ -1,0 +1,44 @@
+http cats/ http dogs - sites com Respostas do código request.
+
+-------------------------------------------------------------
+GET - listar
+* retornamos OK
+POST - cadastrar (salvar)
+* retornamos CRIADO
+DELETE - deletar um recurso - precisa parametro
+* retornamos OKL
+PUT - update/ atualizar - precisa parametro
+* retornamos OK
+
+-------------------------------------------------------------
+json
+
+https://api.github.com/search/users?q=
+https://randomuser.me/api/0.7
+
+-------------------------------------------------------------
+
+init
+import flask from Flask
+app = Flask (__name__)
+
+-------------------------------------------------------------
+
+from http import HTTPStatus
+from app import app
+
+@app.route("/") # mapear o recurso
+def contexto_app():
+    #retorno uma string que quero apresentar na tela
+    return "Bem vindo ao CRUD de pessoa 21:14", HTTPStatus.OK
+
+@app.route("/pessoa", methods=['POST']) #post para cadastrar
+def salvar():
+    return "Criando user", HTTPStatus.CREATED
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
+-------------------------------------------------------------
+
